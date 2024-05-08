@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATS Resume Score Checker</title>
+    <title>Yugal ATS Score Checker</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -11,40 +11,105 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
         }
         .container {
             margin-top: 50px;
         }
-        .form-group {
-            margin-bottom: 20px;
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        #scoreResult {
-            display: none;
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            background-color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .textbox-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-top: 50px;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
+    <div class="header text-center py-4">
+        <h1>Yugal ATS Score Checker</h1>
+    </div>
+
     <div class="container">
-        <h1 class="text-center mb-4">ATS Resume Score Checker</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="resume">Upload Resume</label>
-                    <input type="file" class="form-control-file" id="resume">
-                </div>
-                <div class="form-group">
-                    <label for="jobDescription">Enter Job Description</label>
-                    <textarea class="form-control" id="jobDescription" rows="5"></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="checkScore()">Check Score</button>
-            </div>
-            <div class="col-md-6">
-                <div id="scoreResult">
-                    <h2>Resume Score: <span id="score"></span></h2>
-                    <button class="btn btn-success" onclick="printReport()">Print Report <i class="fas fa-print"></i></button>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>ATS Resume Score Checker</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="resumeForm">
+                            <div class="form-group">
+                                <label for="resume">Upload Resume</label>
+                                <input type="file" class="form-control-file" id="resume">
+                            </div>
+                            <div class="form-group">
+                                <label for="jobDescription">Enter Job Description</label>
+                                <textarea class="form-control" id="jobDescription" rows="5"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary" onclick="checkScore()">Check Score</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="row justify-content-center mt-4" id="scoreResult" style="display: none;">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Resume Score</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 id="score"></h4>
+                        <button type="button" class="btn btn-primary" onclick="printReport()">Print Report <i class="fas fa-print"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8 textbox-container">
+                <h3>About ATS Score Checker</h3>
+                <p>This tool helps you check the compatibility of your resume with a job description provided. Simply upload your resume and enter the job description to get an ATS score.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Yugal ATS Score Checker - Developed by Yugal</p>
     </div>
 
     <!-- Bootstrap JS and jQuery -->
@@ -79,4 +144,3 @@
     </script>
 </body>
 </html>
-
